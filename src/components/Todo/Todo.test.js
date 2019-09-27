@@ -27,4 +27,12 @@ describe('<Todo />', () => {
     const wrapper = component.find('.done');
     expect(wrapper.text()).toEqual('TEST_TITLE');
   });
+
+  it('should handle clicks', () => {
+    const mockClickDone = jest.fn();
+    const component = shallow(<Todo clickDone={mockClickDone} />);
+    const wrapper = component.find('.doneButton');
+    wrapper.simulate('click');
+    expect(mockClickDone).toHaveBeenCalledTimes(1);
+  });
 });
